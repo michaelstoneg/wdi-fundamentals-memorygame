@@ -1,15 +1,6 @@
 var cards = ['queen', 'queen', 'king', 'king'];
 var cardsInPlay = [];
 /*
-if (cardTwo === cardFour) {
-	//window.alert ("You found a match");
-}
-else if (cardOne === cardThree) {
-	window.alert ("You found a match");
-}
-else {
-	window.alert ("Sorry, try again");
-}
 var boardElement = document.querySelector('#game-board');
 */
 var boardElement = document.getElementById("game-board");
@@ -22,10 +13,7 @@ function createBoard() {
 	boardElement.className = "board";
 	document.body.insertBefore(boardElement, footerElement);
 }
-for (var i=0; i<cards.length; i++) {
- when a card is clicked the function isTwoCards will be executed
-    cardElement.addEventListener('click', isTwoCards)
-}*/
+*/
 function createCards() {
   // loop through your cards array to create card elements for your board
   //var i = 0;
@@ -46,39 +34,44 @@ function createCards() {
   //}
   //for (var i = 0; i< cards.length; i++) {
     cardElements.setAttribute('data-card', cards[i]);
-    cardElements.addEventListener('click', cardImages);
+    cardElements.addEventListener('click', isTwoCards);
     console.log("cards away");
   }
 }
 createCards();
-function cardImages() {
-	if (this.getAttribute('data-card') === 'king') {
-		this.innerHTML = '<img src="images/king.png">';
-    //this.style.background-image = '<img src="images/king.png">';
-  }
-	else {
-		this.innerHTML = '<img src="images/queen.png">';
-	}
-}
-cardImages();
 //checks to see if there are cards in play
 function isTwoCards() {
+  if (this.getAttribute('data-card') === 'king') {
+    this.innerHTML = '<img src="images/king.png">';
+    //this.style.background-image = '<img src="images/king.png">';
+  }
+  else {
+    this.innerHTML = '<img src="images/queen.png">';
+  }
   cardsInPlay.push(this.getAttribute('data-card'));
-
+  console.log(cardsInPlay);
   // if you have two cards in play check for a match
   if (cardsInPlay.length === 2) {
   		//return cardsInPlay[0, 1];
     // pass the cardsInPlay as an argument to isMatch function
-    isMatch(cardsInPlay);
+    isMatch();
 
     // clear cards in play array for next try
     cardsInPlay = [];
+    cardsReset();
   }
+
 }
 function isMatch(){
-	if (cardsInPlay[0, 1] === cards[0, 1] || cardsInPlay[0, 1] === cards[2, 3]) {
-		window.alert ("You found a match");
+	if (cardsInPlay[0] === cardsInPlay[1]) {
+		alert("You found a match");
 	} else {
-		window.alert ("Sorry, try again");
+		alert("Sorry, try again");
 	}
+}
+function cardsReset() {
+  var cards = getElementByClass('card');
+  for(var i=0;i<cards.length;i++) {
+    cards[i].innerHTML = "";
+  }
 }

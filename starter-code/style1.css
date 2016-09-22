@@ -23,8 +23,8 @@
 			background-color: #ffff00;
 			border-radius: 10px;
 			float: left;
-			margin: 11%;
-			background-size: cover;
+			margin: 10%;
+			/*background-size: cover;*/
 		}
 		#footer {
 			text-align: center;
