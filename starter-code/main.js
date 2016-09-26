@@ -4,7 +4,7 @@ var cardsInPlay = [];
 var boardElement = document.querySelector('#game-board');
 */
 var boardElement = document.getElementById("game-board");
-console.log(boardElement);
+console.log('stage is set');
 /*var footerElement = document.getElementById("footer");
 function that will create your board
 function createBoard() {
@@ -30,9 +30,7 @@ function createCards() {
     cardElements.className = "card";
 
     // append the card to the board
-   boardElement.appendChild(cardElements);
-  //}
-  //for (var i = 0; i< cards.length; i++) {
+    boardElement.appendChild(cardElements);
     cardElements.setAttribute('data-card', cards[i]);
     cardElements.addEventListener('click', isTwoCards);
     console.log("cards away");
@@ -43,7 +41,6 @@ createCards();
 function isTwoCards() {
   if (this.getAttribute('data-card') === 'king') {
     this.innerHTML = '<img src="images/king.png">';
-    //this.style.background-image = '<img src="images/king.png">';
   }
   else {
     this.innerHTML = '<img src="images/queen.png">';
@@ -70,7 +67,7 @@ function isMatch(){
 	}
 }
 function cardsReset() {
-  var cards = getElementByClass('card');
+  var cards = document.getElementsByClassName('card');
   for(var i=0;i<cards.length;i++) {
     cards[i].innerHTML = "";
   }
